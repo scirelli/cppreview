@@ -2,6 +2,7 @@
 #define node_h
 
 #include <stdbool.h>
+#include <stddef.h>
 
 typedef int DATA;
 
@@ -24,9 +25,15 @@ typedef struct LinkList
     Node *tail;
 } LinkList;
 
-Node* append ( LinkList **ll, DATA *d );
-bool prepend ( LinkList **ll, DATA *d );
-bool contains( LinkList *ll,  DATA *d );
-Node* delete ( LinkList **ll, DATA *d );
+Node* createNode();
+LinkList* createLinkList( DATA *d );
+Node* append    ( LinkList *ll, DATA *d );
+Node* prepend   ( LinkList *ll, DATA *d );
+Node* contains  ( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
+Node* removeNode( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
+bool  deleteList( LinkList *ll          );
+bool  clearList( LinkList *ll           );
+void printNode( char str[], Node * n    );
+void printList  ( LinkList *ll          );
 
 #endif
