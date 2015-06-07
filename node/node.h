@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef int DATA;
 
@@ -25,15 +27,16 @@ typedef struct LinkList
     Node *tail;
 } LinkList;
 
-Node* createNode();
+Node*     createNode    ( );
 LinkList* createLinkList( DATA *d );
-Node* append    ( LinkList *ll, DATA *d );
-Node* prepend   ( LinkList *ll, DATA *d );
-Node* contains  ( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
-Node* removeNode( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
-bool  deleteList( LinkList *ll          );
-bool  clearList( LinkList *ll           );
-void printNode( char str[], Node * n    );
-void printList  ( LinkList *ll          );
+Node*     append        ( LinkList *ll, DATA *d );
+Node*     prepend       ( LinkList *ll, DATA *d );
+Node*     contains      ( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
+Node*     removeNode    ( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) );
+bool      cyclical      ( LinkList *ll          );
+bool      deleteList    ( LinkList *ll          );
+bool      clearList     ( LinkList *ll          );
+void      printNode     ( char str[], Node * n  );
+void      printList     ( LinkList *ll          );
 
 #endif

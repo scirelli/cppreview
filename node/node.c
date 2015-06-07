@@ -1,6 +1,4 @@
 #include "node.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 Node* createNode()
 {
@@ -80,11 +78,35 @@ Node* removeNode( LinkList *ll, DATA *d, int (*compare)(DATA *a, DATA *b) ){
     return NULL;
 }
 
+/*************************************************
+ * Determines if a list is cyclical or not. Lists
+ * Should end in null if not cyclical.
+**************************************************/
+bool cyclical( LinkList *ll )
+{
+    Node *slow = ll->head;
+
+    if( !slow ){ return false; }
+
+    Node *fast = ll->head->next;
+
+    while(true){
+        if( !fast || !fast->next ){
+            return false;
+        }else if( fast == slow || fast->next == slow ){
+            return true;
+        }else{
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+    }
+}
+
 bool clearList( LinkList *ll )
 {
     Node *curNode = ll->head;
     
-    while( ll->head != NULL ){
+    while( !ll->head ){
         ll->head = curNode->next;
         free(curNode);
         curNode = ll->head;
