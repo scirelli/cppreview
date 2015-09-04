@@ -10,6 +10,7 @@ Node* createNode()
     n->data = NULL;
     return n;
 }
+
 LinkList* createLinkList( DATA *d )
 {
     LinkList *ll = (LinkList*)malloc( sizeof(LinkList) );
